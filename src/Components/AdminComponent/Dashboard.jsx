@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Dashboard() {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
+   
     const navigate = useNavigate();
 
     const logout = async () => {
@@ -14,6 +14,7 @@ function Dashboard() {
 
         if (!token) {
             alert("You are not logged in.");
+          
             return;
         }
 
@@ -23,7 +24,7 @@ function Dashboard() {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Authorization": `Bearer ${token}`, 
+                    "Authorization": `Bearer ${token}`,
                 },
             });
 
@@ -31,7 +32,7 @@ function Dashboard() {
             if (response.ok) {
                 localStorage.removeItem("token"); // Remove the token from localStorage
                 alert(data.message || "Logged out successfully.");
-                navigate("/login"); 
+                navigate("/login");
             } else {
                 alert(data.message || "Logout failed.");
             }
@@ -51,11 +52,11 @@ function Dashboard() {
             <div style={{ backgroundColor: '#f5f6f7' }} className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
 
                 {/*  Site header */}
-                <Header  sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} logout={logout} />
+                <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} logout={logout} />
 
                 <main className="grow">
                     <div style={{ backgroundColor: '#f5f6f7' }} className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto ">
-
+                  
                     </div>
                 </main>
 
