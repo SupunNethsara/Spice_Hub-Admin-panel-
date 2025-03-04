@@ -1,6 +1,21 @@
 import React from 'react'
-
+import axios from 'axios'
+import { useState } from 'react'
+import { useEffect } from 'react';
 export default function LatestProducts() {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        axios.post('http://localhost:8000/api/getproducts').then(response => {
+            setProducts(response.data);
+        })
+            .catch(error => {
+                console.log("There was an error fetching the products:", error);
+            });
+
+    }, []);
+
     return (
         <div>
             <section class="bg-gray-50 dark:bg-gray-900 ">
@@ -38,33 +53,36 @@ export default function LatestProducts() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class=" hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <td class="w-4 px-4 py-3">
+                                    {products.map(product => (
+                                        <tr key={product.id} class=" hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <td class="w-4 px-4 py-3">
 
-                                        </td>
-                                        <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image" class="w-auto h-8 mr-3" />
-                                            Apple iMac 27&#34;
-                                        </th>
-                                        <td class="px-4 py-2">
-                                            <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">Desktop PC</span>
-                                        </td>
-                                        <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                               LKR.100.00
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-2 font-medium text-red-700 cursor-pointer hover:text-red-800"><a>Delete</a></td>
-                                        <td class="px-4 py-2 font-medium text-blue-700  cursor-pointer"><a>Edit</a></td>
-                                        <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap ">
-                                            <div class="flex items-center">
+                                            </td>
+                                            <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <img src={`http://localhost:8000/storage/${product.Product_image}`} alt={product.product_name} class="w-auto h-15 mr-3" />
+                                               
+                                            </th>
+                                            <td class="px-4 py-2">
+                                                <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300"> {product.product_name}</span>
+                                            </td>
+                                            <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <div class="flex items-center">
+                                                LKR.{product.Product_price}
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2 font-medium text-red-700 cursor-pointer hover:text-red-800"><a>Delete</a></td>
+                                            <td class="px-4 py-2 font-medium text-blue-700  cursor-pointer"><a>Edit</a></td>
+                                            <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap ">
+                                                <div class="flex items-center">
 
-                                                <p className='text-green-400'>Done</p>
-                                            </div>
-                                        </td>
+                                                    <p className='text-green-400'>Done</p>
+                                                </div>
+                                            </td>
 
 
-                                    </tr>
+                                        </tr>
+
+                                    ))}
 
                                 </tbody>
                             </table>
