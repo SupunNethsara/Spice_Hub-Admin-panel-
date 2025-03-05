@@ -2,10 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react';
-export default function LatestProducts() {
+
+export default function LatestProducts({  }) {
 
     const [products, setProducts] = useState([]);
-
+    const [count, setCount] = useState(0);
     useEffect(() => {
         axios.post('http://localhost:8000/api/getproducts').then(response => {
             setProducts(response.data);
@@ -14,6 +15,18 @@ export default function LatestProducts() {
                 console.log("There was an error fetching the products:", error);
             });
 
+    }, []);
+    useEffect(()=>{
+        const fetchStudentCount = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/countitems');
+                setCount(response.data.count);
+            }
+            catch {
+                console.error('Failed to fetch student count:');
+            }
+        }
+        fetchStudentCount(); 
     }, []);
 
     return (
@@ -25,7 +38,7 @@ export default function LatestProducts() {
                             <div class="flex items-center flex-1 space-x-4">
                                 <h5>
                                     <span class="text-gray-500">All Products:</span>
-                                    <span className="text-red-700"> 60</span>
+                                    <span className="text-red-700 font-bold"> {count}</span>
                                 </h5>
                                 <h5>
                                     <span class="text-gray-500">Total sales:</span>
@@ -60,14 +73,14 @@ export default function LatestProducts() {
                                             </td>
                                             <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <img src={`http://localhost:8000/storage/${product.Product_image}`} alt={product.product_name} class="w-auto h-15 mr-3" />
-                                               
+
                                             </th>
                                             <td class="px-4 py-2">
                                                 <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300"> {product.product_name}</span>
                                             </td>
                                             <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <div class="flex items-center">
-                                                LKR.{product.Product_price}
+                                                    LKR.{product.Product_price}
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 font-medium text-red-700 cursor-pointer hover:text-red-800"><a>Delete</a></td>

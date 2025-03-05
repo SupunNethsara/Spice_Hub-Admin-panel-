@@ -1,6 +1,8 @@
-import React from 'react'
+import { useState ,useEffect } from "react";
 
-export default function Stats() {
+
+export default function Stats({ productCount }) {
+
   return (
     <div>
         <div class="m-6">
@@ -31,7 +33,7 @@ export default function Stats() {
                 </div>
 
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">4644</h4>
+                    <h4 class="text-2xl font-semibold text-gray-700">0</h4>
                     <div class="text-gray-500">New Users</div>
                 </div>
             </div>
@@ -54,7 +56,7 @@ export default function Stats() {
                 </div>
 
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">3453</h4>
+                    <h4 class="text-2xl font-semibold text-gray-700">0</h4>
                     <div class="text-gray-500">Total Orders</div>
                 </div>
             </div>
@@ -73,7 +75,7 @@ export default function Stats() {
                 </div>
 
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">678</h4>
+                    <h4 class="text-2xl font-semibold text-gray-700">{productCount}</h4>
                     <div class="text-gray-500">Available Products</div>
                 </div>
             </div>
