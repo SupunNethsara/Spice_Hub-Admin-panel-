@@ -1,8 +1,24 @@
-# React + Vite
+# 🌶 Spices Hub - Admin Panel (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview  
+This is the *React.js-based Admin Panel* for Spices Hub, a system designed for managing products, orders, and users efficiently.  
 
-Currently, two official plugins are available:
+## 🚀 Features  
+- ✅ *Admin authentication (JWT-based login)*  
+- ✅ *Product management (CRUD operations)*  
+- ✅ *User management*  
+- ✅ *Order tracking dashboard*  
+- ✅ *Responsive UI with TailwindCSS*  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack  
+- *Frontend:* React.js, TailwindCSS  
+- *State Management:* Context API 
+- *API Communication:* Axios  
+- *Authentication:* JWT  
+
+## 🔧 Installation  
+
+⿡ *Clone the repository*  
+```sh
+git clone https://github.com/your-username/spices-hub-admin-frontend.git
+cd spices-hub-admin-frontend
