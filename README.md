@@ -20,5 +20,4 @@ This is the *React.js-based Admin Panel* for Spices Hub, a system designed for m
 
 ⿡ *Clone the repository*  
 ```sh
-git clone https://github.com/your-username/spices-hub-admin-frontend.git
-cd spices-hub-admin-frontend
+git clone https://github.com/SupunNethsara/Spice_Hub-Admin-panel-.git
