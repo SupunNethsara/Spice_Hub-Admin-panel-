@@ -1,58 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Products.css'
+import React from 'react'
+
 export default function LatestProducts() {
-    const [products, setProducts] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/getproducts')
-            .then(response => {
-                setProducts(response.data);
-            })
-            .catch(error => {
-                console.log("There was an error fetching the products:", error);
-            });
-    }, []);
-
-    const deleteProduct = (id) => {
-        axios.delete(`http://localhost:8000/api/deleteproduct/${id}`)
-            .then(response => {
-                setProducts(prevProducts => prevProducts.filter(product => product.id !== id));
-                alert('Product deleted successfully!');
-            })
-            .catch(error => {
-                console.error("There was an error deleting the product:", error);
-                alert('Failed to delete product!');
-            });
-    };
-
-    const openEditModal = (product) => {
-        setSelectedProduct(product);
-        setIsModalOpen(true);
-    };
-
-    const closeEditModal = () => {
-        setIsModalOpen(false);
-        setSelectedProduct(null);
-    };
-
-    const handleEditSubmit = (event) => {
-        event.preventDefault();
-
-        axios.put(`http://localhost:8000/api/updateproduct/${selectedProduct.id}`, selectedProduct)
-            .then(response => {
-                setProducts(prevProducts => prevProducts.map(product => product.id === selectedProduct.id ? response.data : product));
-                closeEditModal();
-                alert('Product updated successfully!');
-            })
-            .catch(error => {
-                console.error("There was an error updating the product:", error);
-                alert('Failed to update product!');
-            });
-    };
-
     return (
         <div>
             <section className="bg-gray-50 dark:bg-gray-900">
@@ -61,7 +9,7 @@ export default function LatestProducts() {
                         <div className="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
                             <div className="flex items-center flex-1 space-x-4">
                                 <h5>
-                                    <span className="text-gray-500">All Products:</span>
+                                    <span class="text-gray-500">All Products:</span>
                                     <span className="text-red-700"> 60</span>
                                 </h5>
                                 <h5>
@@ -84,44 +32,34 @@ export default function LatestProducts() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map(product => (
-                                        <tr key={product.id} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                            <td className="w-4 px-4 py-3"></td>
-                                            <td className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {product.Product_image && (
-                                                    <img
-                                                        src={`http://localhost:8000/storage/${JSON.parse(product.Product_image)[0]}`}
-                                                        alt={product.product_name}
-                                                        className="w-10 h-10 mr-3 object-cover"
-                                                    />
-                                                )}
-                                            </td>
-                                            <td className="px-4 py-2">
-                                                <span className="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300"> {product.product_name}</span>
-                                            </td>
-                                            <td className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <div className="flex items-center">
-                                                    LKR.{product.Product_price}
-                                                </div>
-                                            </td>
-                                            <td className="px-4 py-2 font-medium text-red-700 cursor-pointer hover:text-red-800">
-                                                <button
-                                                    onClick={() => deleteProduct(product.id)}
-                                                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                                                >
-                                                    Delete
-                                                </button>
-                                            </td>
-                                            <td className="px-4 py-2 font-medium text-blue-700 cursor-pointer">
-                                                <button onClick={() => openEditModal(product)}>Edit</button>
-                                            </td>
-                                            <td className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
-                                                <div className="flex items-center">
-                                                    <p className='text-green-400'>Done</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                    <tr class=" hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <td class="w-4 px-4 py-3">
+
+                                        </td>
+                                        <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image" class="w-auto h-8 mr-3" />
+                                            Apple iMac 27&#34;
+                                        </th>
+                                        <td class="px-4 py-2">
+                                            <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">Desktop PC</span>
+                                        </td>
+                                        <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <div class="flex items-center">
+                                               LKR.100.00
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 font-medium text-red-700 cursor-pointer hover:text-red-800"><a>Delete</a></td>
+                                        <td class="px-4 py-2 font-medium text-blue-700  cursor-pointer"><a>Edit</a></td>
+                                        <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap ">
+                                            <div class="flex items-center">
+
+                                                <p className='text-green-400'>Done</p>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
