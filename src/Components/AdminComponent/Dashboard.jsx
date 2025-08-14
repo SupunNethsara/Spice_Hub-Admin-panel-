@@ -7,19 +7,13 @@ function Dashboard() {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-   
+
 
     return (
         <div className="flex h-screen overflow-hidden">
-
-            {/* Sidebar */}
             <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-            {/* Content area */}
             <div style={{ backgroundColor: '#f5f6f7' }} className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
 
-                {/*  Site header */}
-               
                 <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
                 <main className="grow">
@@ -29,10 +23,6 @@ function Dashboard() {
                         </div>
                     </div>
                 </main>
-
-
-
-
             </div>
         </div>
     );

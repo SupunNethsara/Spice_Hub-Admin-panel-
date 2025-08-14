@@ -31,8 +31,8 @@ export default function Authentication() {
 
     if (response.ok) {
       localStorage.setItem("token", data.token);
-  alert('logging succesfull')
-      
+      alert('logging succesfull')
+
       navigate("/admin");
     } else {
       alert(data.message || "Login Failed!");
@@ -42,7 +42,6 @@ export default function Authentication() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="flex w-full max-w-6xl shadow-lg rounded-lg overflow-hidden bg-white">
-        {/* Left Side - Form */}
         <div className="w-full md:w-1/3 p-10 flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-center">Sign in to your account</h2>
           <form onSubmit={login} className="mt-6 space-y-6">
@@ -81,12 +80,12 @@ export default function Authentication() {
             and
             <a href="#" className="text-blue-600 underline mx-1">Privacy Policy</a>
           </p>
-         
+
         </div>
         {/* Right Side - Full Screen Image */}
         <div className="hidden md:flex w-2/3 bg-cover bg-center relative">
           <div className="image-sec absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      
+
           </div>
         </div>
       </div>

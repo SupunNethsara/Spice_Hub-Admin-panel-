@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
 import Search from './Routing_Components/MainDashComponents/Search';
 
-
-
-
-
-
 function Header({
   sidebarOpen,
   setSidebarOpen,
   variant = 'default',
 }) {
-
-
-
   return (
     <header className={`sticky top-0 before:absolute before:inset-0 bg-white  before:-z-10 z-30 ${variant === 'v2' || variant === 'v3' ? ' after:absolute after:h-px after:inset-x-0 after:top-full   after:-z-10' : 'max-lg:shadow-xs  '} ${variant === 'v2' ? '' : ''} ${variant === 'v3' ? '' : ''}`}>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between h-16 ${variant === 'v2' || variant === 'v3' ? '' : ' '}`}>
-
- 
           <div className="flex">
-
- 
             <button
               className="text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 lg:hidden"
               aria-controls="sidebar"
@@ -36,21 +24,11 @@ function Header({
                 <rect x="4" y="17" width="16" height="2" />
               </svg>
             </button>
-            <Search/>
+            <Search />
           </div>
-       
-          {/* Header: Right side */}
+
           <div className="flex items-center space-x-3">
-          
-           
-   
-       
-        
-          
-         
-
           </div>
-
         </div>
       </div>
     </header>
