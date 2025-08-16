@@ -27,7 +27,8 @@ export default function ProductModal() {
     'අමුණුම් (Seasonings) (Seasonings)',    
     'සුගඳ මසාලා (Aromatic Spices)',             
     'මිරිස් & මිරිස් වර්ග (Pepper & Chilies)',      
-    'විශේෂ/අනර්ඝ මසාලා (Exotic Spices)'   
+    'විශේෂ/අනර්ඝ මසාලා (Exotic Spices)',
+    'තේජස් කොළ සහ සුවඳ පඳුරු (Fresh Herbs)'   
 ];
 
 
