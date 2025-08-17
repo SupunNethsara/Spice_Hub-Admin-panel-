@@ -17,7 +17,6 @@ function Sidebar({
     const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
     const [sidebarExpanded, setSidebarExpanded] = useState(storedSidebarExpanded === null ? false : storedSidebarExpanded === "true");
 
-    // close on click outside
     useEffect(() => {
         const clickHandler = ({ target }) => {
             if (!sidebar.current || !trigger.current) return;
@@ -28,7 +27,7 @@ function Sidebar({
         return () => document.removeEventListener("click", clickHandler);
     });
 
-    // close if the esc key is pressed
+
     useEffect(() => {
         const keyHandler = ({ keyCode }) => {
             if (!sidebarOpen || keyCode !== 27) return;
@@ -71,7 +70,7 @@ function Sidebar({
 
             const data = await response.json();
             if (response.ok) {
-                localStorage.removeItem("token"); // Remove the token from localStorage
+                localStorage.removeItem("token"); 
                 alert(data.message || "Logged out successfully.");
                 navigate("/login");
             } else {
@@ -85,14 +84,12 @@ function Sidebar({
 
     return (
         <div className="min-w-fit">
-            {/* Sidebar backdrop (mobile only) */}
             <div
                 className={`fixed inset-0 bg-gray-900/30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
                     }`}
                 aria-hidden="true"
             ></div>
 
-            {/* Sidebar */}
             <div
                 id="sidebar"
                 ref={sidebar}
@@ -113,17 +110,12 @@ function Sidebar({
                             <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
                         </svg>
                     </button>
-                    {/* Logo */}
+               
+ </div>
 
-
-
-                </div>
-
-                {/* Links */}
-                <div className="space-y-8">
-                    {/* Pages group */}
-                    <div>
-                        <h3 className="text-xs uppercase text-gray-800 font-semibold pl-3">
+          <div className="space-y-8">
+  <div>
+                    <h3 className="text-xs uppercase text-gray-800 font-semibold pl-3">
                             <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">
                                 •••
                             </span>
@@ -171,7 +163,31 @@ function Sidebar({
                                                 </svg>
                                             </span>
                                             <span className="ml-2 text-sm tracking-wide truncate">
-                                                Products
+                                               Web Products
+                                            </span>
+                                            <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">
+                                                New
+                                            </span>
+                                        </Link>
+                                        <Link
+                                            to="user-products"
+                                            className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                                            <span className="inline-flex justify-center items-center ml-4">
+                                                <svg
+                                                    className="w-5 h-5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M16 11V9a4 4 0 00-8 0v2M5 11h14l1 9H4l1-9z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span className="ml-2 text-sm tracking-wide truncate">
+                                               Product to Dashboard
                                             </span>
                                             <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">
                                                 New
