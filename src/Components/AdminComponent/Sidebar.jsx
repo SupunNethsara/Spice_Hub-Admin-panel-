@@ -70,7 +70,7 @@ function Sidebar({
 
             const data = await response.json();
             if (response.ok) {
-                localStorage.removeItem("token"); 
+                localStorage.removeItem("token");
                 alert(data.message || "Logged out successfully.");
                 navigate("/login");
             } else {
@@ -110,12 +110,12 @@ function Sidebar({
                             <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
                         </svg>
                     </button>
-               
- </div>
 
-          <div className="space-y-8">
-  <div>
-                    <h3 className="text-xs uppercase text-gray-800 font-semibold pl-3">
+                </div>
+
+                <div className="space-y-8">
+                    <div>
+                        <h3 className="text-xs uppercase text-gray-800 font-semibold pl-3">
                             <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">
                                 •••
                             </span>
@@ -163,7 +163,7 @@ function Sidebar({
                                                 </svg>
                                             </span>
                                             <span className="ml-2 text-sm tracking-wide truncate">
-                                               Web Products
+                                                Web Products
                                             </span>
                                             <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">
                                                 New
@@ -187,7 +187,31 @@ function Sidebar({
                                                 </svg>
                                             </span>
                                             <span className="ml-2 text-sm tracking-wide truncate">
-                                               Product to Dashboard
+                                                Product to Dashboard
+                                            </span>
+                                            <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">
+                                                New
+                                            </span>
+                                        </Link>
+                                           <Link
+                                            to="shipping"
+                                            className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                                            <span className="inline-flex justify-center items-center ml-4">
+                                                <svg
+                                                    className="w-5 h-5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M16 11V9a4 4 0 00-8 0v2M5 11h14l1 9H4l1-9z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span className="ml-2 text-sm tracking-wide truncate">
+                                            Shipping details
                                             </span>
                                             <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">
                                                 New
