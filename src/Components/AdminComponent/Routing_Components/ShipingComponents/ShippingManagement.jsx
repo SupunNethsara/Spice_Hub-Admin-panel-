@@ -128,13 +128,10 @@ const ShippingManagement = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-1">
       <div className="max-w-full mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-        {/* Header */}
-        <div className="bg-indigo-600 p-6 text-white">
+        {/* <div className="bg-indigo-600 p-6 text-white">
           <h1 className="text-3xl font-bold">Shipping Management System</h1>
           <p className="mt-2">Manage provinces, districts, and shipping payments</p>
-        </div>
-
-        {/* Navigation Tabs */}
+        </div> */}
         <div className="flex border-b border-gray-200">
           {['provinces', 'districts', 'payments'].map(tab => (
             <button
@@ -148,12 +145,9 @@ const ShippingManagement = () => {
         </div>
 
         <div className="p-6">
-          {/* Provinces Tab */}
           {activeTab === 'provinces' && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Manage Provinces</h2>
-              
-              {/* Add Province Form */}
               <form onSubmit={submitProvince} className="mb-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-medium mb-3">Add New Province</h3>
                 <div className="flex gap-4">
@@ -170,8 +164,6 @@ const ShippingManagement = () => {
                   </button>
                 </div>
               </form>
-              
-              {/* Provinces List */}
               <div>
                 <h3 className="text-lg font-medium mb-3">Existing Provinces</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -185,13 +177,9 @@ const ShippingManagement = () => {
               </div>
             </div>
           )}
-
-          {/* Districts Tab */}
           {activeTab === 'districts' && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Manage Districts</h2>
-              
-              {/* Add District Form */}
               <form onSubmit={submitDistrict} className="mb-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-medium mb-3">Add New District</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -219,8 +207,7 @@ const ShippingManagement = () => {
                   Add District
                 </button>
               </form>
-              
-              {/* Districts List */}
+        
               <div>
                 <h3 className="text-lg font-medium mb-3">Existing Districts</h3>
                 <div className="overflow-x-auto">
@@ -249,12 +236,9 @@ const ShippingManagement = () => {
             </div>
           )}
 
-          {/* Payments Tab */}
-          {activeTab === 'payments' && (
+        {activeTab === 'payments' && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Manage Shipping Payments</h2>
-              
-              {/* Add Payment Form */}
               <form onSubmit={submitPayment} className="mb-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-medium mb-3">Add New Shipping Payment</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -298,8 +282,6 @@ const ShippingManagement = () => {
                   Add Payment
                 </button>
               </form>
-              
-              {/* Payments List */}
               <div>
                 <h3 className="text-lg font-medium mb-3">Existing Shipping Payments</h3>
                 <div className="overflow-x-auto">
